@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Sculptures</h1>
+
+  <div class="sculptures-container">
+    {% for sculpture in sculptures %}
+    <div class="sculpture-item">
+      {% if sculpture.image_path %}
+      <img src="{{ url_for('static', filename=sculpture.image_path) }}" alt="{{ sculpture.name }}">
+      {% else %}
+      <img src="{{ url_for('static', filename='placeholder.png') }}" alt="Placeholder Image">
+      {% endif %}
+      <h3>{{ sculpture.name }}</h3>
+      <p>Price: ${{ sculpture.price }}</p>
+      <a href="#" class="pre-order-btn">Pre-order Now</a>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

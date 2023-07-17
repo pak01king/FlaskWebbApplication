@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReArt</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bas.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='img/logo.png') }}">
+            </a>
+        </div>
+        <ul class="navbar-list">
+            <li class="navbar-item"><a href="/">Home</a></li>
+            <li class="navbar-item"><a href="/sculptures">Sculptures</a></li>
+            <li class="navbar-item"><a href="/artists">Artists</a></li>
+            <li class="navbar-item"><a href="/about">About</a></li>
+        </ul>
+        <div class="search-box">
+            <input type="text" placeholder="Search">
+            <button type="submit">Go</button>
+        </div>
+    </nav>
+   
+    
+
+    <!-- Content block that will be replaced by individual page templates -->
+    {% block content %}{% endblock %}
+
+    <!-- Add your footer here -->
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+
+    <!-- Add JavaScript files and other scripts here -->
+    <script src="js/main.js"></script>
+</body>
+</html>

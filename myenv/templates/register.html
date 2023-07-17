@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <title>Register</title>
+    <style>
+        .center-align {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Salut, bun venit pe platforma unde să ti partajezi capodoperele</h1>
+    <h1>Inregistrare:</h1>
+    <form action="{{ url_for('register') }}" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required><br>
+
+        <input type="submit" value="Register">
+        
+        <div class="center-align">
+            <label>Already have an account? <a href="{{ url_for('login') }}">Login</a></label>
+        </div>
+    </form>
+</body>
+</html>

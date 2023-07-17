@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Welcome, {{ user.username }}!</h1>
+  
+  <button id="profile-btn">Profile Information</button>
+  
+  <div id="profile-details" style="display: none;">
+    <p>Email: {{ user.email }}</p>
+    <p>Fullname: {{ user.fullname }}</p>
+  </div>
+
+  <button id="edit-profile-btn">Edit Profile</button>
+
+  <form id="edit-profile-form" style="display: none;" action="{{ url_for('update_profile') }}" method="POST">
+    <label for="fullname">Fullname:</label>
+    <input type="text" name="fullname" value="{{ user.fullname }}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" value="{{ user.email }}" required>
+
+    <input type="submit" value="Update Profile">
+  </form>
+  
+  <div class="sculptures-section">
+    <h2>My Sculptures</h2>
+    <div class="sculptures-container">
+      
+        {% for sculpture in sculptures %}
+        <div class="sculpture-item">
+            {% if sculpture.image_path %}
+                <img src="{{ url_for('static', filename=sculpture.image_path) }}">
+            {% else %}
+                <img src="{{ url_for('static', filename='placeholder.png') }}">
+            {% endif %}
+            <h3>{{ sculpture.name or 'Untitled Sculpture' }}</h3>
+            <p>Price: ${{ sculpture.price or 'N/A' }}</p>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+
+  <h2>Uploaded Sculptures:</h2>
+  {% for sculpture in sculptures %}
+    <div class="sculpture">
+        {% if sculpture.image_path %}
+            <img src="{{ url_for('static', filename=sculpture.image_path) }}" alt="{{ sculpture.name }}">
+        {% else %}
+            <img src="{{ url_for('static', filename='placeholder.png') }}" alt="{{ sculpture.name }}">
+        {% endif %}
+        <h3>{{ sculpture.name }}</h3>
+        <p>Price: ${{ sculpture.price }}</p>
+    </div>
+  {% endfor %}
+    
+  <button id="upload-sculpture-btn">Add Your Artwork</button>
+  
+  <div id="upload-sculpture-form" style="display: none;">
+    <form action="/upload_sculpture" method="POST" enctype="multipart/form-data">
+      <label for="sculpture-name">Sculpture Name:</label>
+      <input type="text" id="sculpture-name" name="sculpture_name" required><br>
+      
+      <label for="sculpture-image">Sculpture Image:</label>
+      <input type="file" id="sculpture-image" name="sculpture_image" accept="img/*" required><br>
+      
+      <label for="sculpture-price">Sculpture Price:</label>
+      <input type="number" id="sculpture-price" name="sculpture_price" required><br>
+      
+      <input type="submit" value="Upload Sculpture">
+    </form>
+  </div>
+ 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Toggle profile information
+      $('#profile-btn').click(function() {
+        $('#profile-details').slideToggle();
+      });
+  
+      // Toggle edit profile form
+      $('#edit-profile-btn').click(function() {
+        $('#edit-profile-form').slideToggle();
+      });
+  
+      // Toggle upload sculpture form
+      $('#upload-sculpture-btn').click(function() {
+        $('#upload-sculpture-form').slideToggle();
+      });
+    });
+  </script>
+  
+{% endblock %}

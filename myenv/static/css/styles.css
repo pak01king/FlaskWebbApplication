@@ -1,0 +1,73 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  h1 {
+    color: #333;
+    text-align:center;
+
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  input[type="submit"] {
+    background: linear-gradient(to right, #ff4b51, #62faff);
+    border: none;
+    color: rgb(15, 14, 14);
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    font-weight:bold ;
+    
+  }
+  
+  input[type="submit"]:hover {
+    background-position: right center;
+    background-image: linear-gradient(to right, #ff565b, #ff7e5b);
+    background-size: 200% auto;
+    animation: colorMove 3s infinite;
+
+  }
+  @keyframes colorMove {
+    0% {
+        background-position: left center;
+    }
+    50% {
+        background-position: right center;
+    }
+    100% {
+        background-position: left center;
+    }
+}
+
+/*login and mmessage daca tu deja te-ai inregistrat*/
+
+.center-align {
+    text-align: center;
+}
